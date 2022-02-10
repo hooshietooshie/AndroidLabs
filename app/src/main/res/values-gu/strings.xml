@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Lab01</string>
-    <string name="hello_message">Namaste Duniya!</string>
-    <string name="ButtonText">Hu ek button chhu</string>
+    <string name="hello_message">મારા GUI જુઓ!</string>
+    <string name="ButtonText">હું એક બટન છું</string>
+    <string name="CheckBox_Text">આ તપાસો</string>
+    <string name="switch_text">ચાલુ/બંધ કરો</string>
+    <string name="hint_text">અહી લખો</string>
+    <string name="toast_message">અહીં વધુ માહિતી છે</string>
+    <string name="snack_message">સ્વીચ હવે દ્વારા અનુસરવામાં આવે છે</string>
+    <string name="undo">પૂર્વવત્</string>
 </resources>
