@@ -17,16 +17,16 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_relative);
+        setContentView(R.layout.activity_main_grid);
 
-        Button btn = findViewById(R.id.button2);
+        Button btn = findViewById(R.id.button3);
         btn.setOnClickListener(
                 (v) -> {
                     Toast.makeText(MainActivity.this, getResources().getString(R.string.toast_message), LENGTH_LONG).show();
                 }
         );
 
-        Switch swh = findViewById(R.id.switch2);
+        Switch swh = findViewById(R.id.switch3);
         swh.setOnCheckedChangeListener((cb, check) -> {
             Snackbar.make(swh, getResources().getString(R.string.snack_message), Snackbar.LENGTH_LONG).setAction(getResources().getString(R.string.undo), click -> cb.setChecked(!check)).show();
         });
