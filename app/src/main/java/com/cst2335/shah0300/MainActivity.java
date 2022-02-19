@@ -77,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
 
             Intent goToProfile = new Intent(MainActivity.this, ProfileActivity.class);
             goToProfile.putExtra("email", getResources().getString(R.string.email_hint));
+            startActivity(goToProfile);
 
         });
 

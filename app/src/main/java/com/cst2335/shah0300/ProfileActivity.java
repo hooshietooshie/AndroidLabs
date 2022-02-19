@@ -63,7 +63,6 @@ public class ProfileActivity extends AppCompatActivity {
         ImageButton imgBtn = (ImageButton) findViewById(R.id.imageButton);
         Intent fromMain = getIntent();
         String usrEmail = fromMain.getStringExtra("email");
-        spf = getSharedPreferences("SharedPrefs", Context.MODE_PRIVATE);
         et.setText(usrEmail);
 
 
