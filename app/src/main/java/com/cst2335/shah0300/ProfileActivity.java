@@ -33,27 +33,6 @@ public class ProfileActivity extends AppCompatActivity {
     public static final String onDestroy = "onDestroy";
     public static final String onActivityResult = "onActivityResult";
 
-    EditText et = findViewById(R.id.editText);
-    SharedPreferences spf;
-
-
-    ImageView imgView;
-
-    ActivityResultLauncher<Intent> myPictureTakerLauncher = registerForActivityResult(
-            new ActivityResultContracts.StartActivityForResult(),
-            new ActivityResultCallback<ActivityResult>() {
-                @Override
-                public void onActivityResult(ActivityResult result) {
-                    if (result.getResultCode() == Activity.RESULT_OK) {
-                        Intent data = result.getData();
-                        Bitmap imgbitmap = (Bitmap) data.getExtras().get("data");
-                        imgView.setImageBitmap(imgbitmap);
-                    } else if (result.getResultCode() == Activity.RESULT_CANCELED)
-                        Log.i(TAG, getResources().getString(R.string.warning));
-                    Log.e(TAG, "In function: " + onActivityResult);
-                }
-            });
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,15 +42,14 @@ public class ProfileActivity extends AppCompatActivity {
         ImageButton imgBtn = (ImageButton) findViewById(R.id.imageButton);
         Intent fromMain = getIntent();
         String usrEmail = fromMain.getStringExtra("email");
+        EditText et = findViewById(R.id.editText);
         et.setText(usrEmail);
 
 
-        imgBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dispatchTakePictureIntent();
-            }
+        imgBtn.setOnClickListener(v -> {
+            dispatchTakePictureIntent();
         });
+
 
         Log.e(TAG, "In function: " + onCreate);
 
@@ -119,5 +97,22 @@ public class ProfileActivity extends AppCompatActivity {
             myPictureTakerLauncher.launch(takePictureIntent);
         }
     }
+
+    ImageView imgView;
+
+    ActivityResultLauncher<Intent> myPictureTakerLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    if (result.getResultCode() == Activity.RESULT_OK) {
+                        Intent data = result.getData();
+                        Bitmap imgbitmap = (Bitmap) data.getExtras().get("data");
+                        imgView.setImageBitmap(imgbitmap);
+                    } else if (result.getResultCode() == Activity.RESULT_CANCELED)
+                        Log.i(TAG, getResources().getString(R.string.warning));
+                    Log.e(TAG, "In function: " + onActivityResult);
+                }
+            });
 
 }
