@@ -1,8 +1,23 @@
 package com.cst2335.shah0300;
 
+import static android.widget.Toast.LENGTH_LONG;
+
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Switch;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.material.snackbar.Snackbar;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -10,5 +25,71 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        String usrEmail, usrPass;
+
+        SharedPreferences spf;
+        EditText et = findViewById(R.id.editText);
+        EditText etp = findViewById(R.id.editText2);
+
+        spf = getSharedPreferences("SharedPrefs", Context.MODE_PRIVATE);
+        usrEmail = spf.getString("email", "");
+        usrPass = spf.getString("pass", "");
+        et.setText(usrEmail);
+        etp.setText(usrPass);
+
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        SharedPreferences spf;
+
+        EditText et = findViewById(R.id.editText);
+        EditText etp = findViewById(R.id.editText2);
+        Button bt = findViewById(R.id.button2);
+
+        spf = getSharedPreferences("SharedPrefs", Context.MODE_PRIVATE);
+
+        String inputEmail = et.getText().toString();
+        String inputPass = etp.getText().toString();
+
+
+        bt.setOnClickListener(v -> {
+
+            SharedPreferences.Editor edit = spf.edit();
+            edit.putString("email", inputEmail).apply();
+
+            edit.putString("pass", inputPass).apply();
+
+
+            Intent goToProfile = new Intent(MainActivity.this, ProfileActivity.class);
+            goToProfile.putExtra("email", getResources().getString(R.string.email_hint));
+
+        });
+
+
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 }

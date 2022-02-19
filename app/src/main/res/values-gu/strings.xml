@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Lab01</string>
-    <string name="hello_message">Namaste Duniya!</string>
-    <string name="ButtonText">Hu ek button chhu</string>
+    <string name="app_name">Lab 03</string>
+    <string name="email">Namaste Duniya!</string>
+    <string name="password">Hu ek button chhu</string>
+    <string name="button">login</string>
+    <string name="email_hint">E-mail</string>
+    <string name="pass_hint">Type your password here</string>
+    <string name="name_hint">Enter your name...</string>
+    <string name="profile">Your profile</string>
+    <string name="name">Your name:</string>
+    <string name="picture">Your picture:</string>
+    <string name="instruction">Click the button above to take a picture</string>
+    <string name="warning">"User refused to capture a picture."</string>
 </resources>
