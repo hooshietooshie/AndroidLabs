@@ -1,6 +1,5 @@
 package com.cst2335.shah0300;
 
-import static android.content.ContentValues.TAG;
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
@@ -9,9 +8,9 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
-import android.content.Context;
+
 import android.content.Intent;
-import android.content.SharedPreferences;
+
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -93,7 +92,6 @@ public class ProfileActivity extends AppCompatActivity {
             myPictureTakerLauncher.launch(takePictureIntent);
         }
     }
-
 
 
     ActivityResultLauncher<Intent> myPictureTakerLauncher = registerForActivityResult(
