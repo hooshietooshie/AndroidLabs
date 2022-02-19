@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         String usrEmail, usrPass;
+        Button btn = findViewById(R.id.button2);
 
         SharedPreferences spf;
         EditText et = findViewById(R.id.editText);
@@ -37,6 +38,12 @@ public class MainActivity extends AppCompatActivity {
         usrPass = spf.getString("pass", "");
         et.setText(usrEmail);
         etp.setText(usrPass);
+
+        btn.setOnClickListener(v -> {
+            Intent goToProfile = new Intent(MainActivity.this, ProfileActivity.class);
+            goToProfile.putExtra("email", getResources().getString(R.string.email_hint));
+            startActivity(goToProfile);
+        });
 
 
     }
@@ -61,25 +68,15 @@ public class MainActivity extends AppCompatActivity {
         EditText etp = findViewById(R.id.editText2);
         Button bt = findViewById(R.id.button2);
 
-        spf = getSharedPreferences("SharedPrefs", Context.MODE_PRIVATE);
-
         String inputEmail = et.getText().toString();
         String inputPass = etp.getText().toString();
 
+        spf = getSharedPreferences("SharedPrefs", Context.MODE_PRIVATE);
+        SharedPreferences.Editor edit = spf.edit();
 
-        bt.setOnClickListener(v -> {
-
-            SharedPreferences.Editor edit = spf.edit();
-            edit.putString("email", inputEmail).apply();
-
-            edit.putString("pass", inputPass).apply();
-
-
-            Intent goToProfile = new Intent(MainActivity.this, ProfileActivity.class);
-            goToProfile.putExtra("email", getResources().getString(R.string.email_hint));
-            startActivity(goToProfile);
-
-        });
+        edit.putString("email", et.getText().toString());
+        edit.putString("pass", etp.getText().toString());
+        edit.apply();
 
 
     }

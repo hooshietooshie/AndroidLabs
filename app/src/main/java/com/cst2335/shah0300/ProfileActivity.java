@@ -19,7 +19,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 
 
 public class ProfileActivity extends AppCompatActivity {
@@ -41,7 +40,7 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        imgBtn = (ImageButton) findViewById(R.id.imageButton);
+        imgBtn = findViewById(R.id.imageButton);
         Intent fromMain = getIntent();
         String usrEmail = fromMain.getStringExtra("email");
         EditText et = findViewById(R.id.editText);
