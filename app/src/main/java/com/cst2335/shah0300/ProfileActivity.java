@@ -24,6 +24,8 @@ import android.widget.ImageView;
 
 public class ProfileActivity extends AppCompatActivity {
 
+    ImageButton imgBtn;
+
     public static final String TAG = "PROFILE_ACTIVITY";
     public static final String onCreate = "onCreate";
     public static final String onStart = "onStart";
@@ -39,16 +41,11 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        ImageButton imgBtn = (ImageButton) findViewById(R.id.imageButton);
+        imgBtn = (ImageButton) findViewById(R.id.imageButton);
         Intent fromMain = getIntent();
         String usrEmail = fromMain.getStringExtra("email");
         EditText et = findViewById(R.id.editText);
         et.setText(usrEmail);
-
-
-        imgBtn.setOnClickListener(v -> {
-            dispatchTakePictureIntent();
-        });
 
 
         Log.e(TAG, "In function: " + onCreate);
@@ -91,14 +88,14 @@ public class ProfileActivity extends AppCompatActivity {
         Log.e(TAG, "In function: " + onDestroy);
     }
 
-    private void dispatchTakePictureIntent() {
+    private void dispatchTakePictureIntent(View view) {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
             myPictureTakerLauncher.launch(takePictureIntent);
         }
     }
 
-    ImageView imgView;
+
 
     ActivityResultLauncher<Intent> myPictureTakerLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
@@ -108,7 +105,7 @@ public class ProfileActivity extends AppCompatActivity {
                     if (result.getResultCode() == Activity.RESULT_OK) {
                         Intent data = result.getData();
                         Bitmap imgbitmap = (Bitmap) data.getExtras().get("data");
-                        imgView.setImageBitmap(imgbitmap);
+                        imgBtn.setImageBitmap(imgbitmap);
                     } else if (result.getResultCode() == Activity.RESULT_CANCELED)
                         Log.i(TAG, getResources().getString(R.string.warning));
                     Log.e(TAG, "In function: " + onActivityResult);

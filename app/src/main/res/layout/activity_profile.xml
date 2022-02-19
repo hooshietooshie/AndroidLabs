@@ -52,6 +52,7 @@
         android:id="@+id/imageButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="dispatchTakePictureIntent"
         android:minHeight="48dp"
         app:srcCompat="@android:drawable/picture_frame"
         tools:ignore="SpeakableTextPresentCheck" />
