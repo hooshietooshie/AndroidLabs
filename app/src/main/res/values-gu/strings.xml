@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Lab 03</string>
-    <string name="email">Namaste Duniya!</string>
-    <string name="password">Hu ek button chhu</string>
-    <string name="button">login</string>
-    <string name="email_hint">E-mail</string>
-    <string name="pass_hint">Type your password here</string>
-    <string name="name_hint">Enter your name...</string>
-    <string name="profile">Your profile</string>
-    <string name="name">Your name:</string>
-    <string name="picture">Your picture:</string>
-    <string name="instruction">Click the button above to take a picture</string>
-    <string name="warning">"User refused to capture a picture."</string>
+    <string name="app_name">લેબ 03</string>
+    <string name="email">તમારું ઈ-મેલ સરનામું:</string>
+    <string name="password">તમારો ખાનગી શબ્દ:</string>
+    <string name="button">પ્રવેશ કરો</string>
+    <string name="email_hint">તમારો ઈ-મેલ અહીં દાખલ કરો..</string>
+    <string name="pass_hint">તમારો પાસવર્ડ અહીં દાખલ કરો..</string>
+    <string name="name_hint">તમારું નામ દાખલ કરો...</string>
+    <string name="profile">તમારી પ્રોફાઇલ</string>
+    <string name="name">તમારું નામ:</string>
+    <string name="picture">તારો ફોટો:</string>
+    <string name="instruction">ચિત્ર લેવા માટે ઉપરના બટન પર ક્લિક કરો</string>
+    <string name="warning">"યુઝરે ફોટો લેવાનો ઇનકાર કર્યો."</string>
 </resources>
