@@ -21,28 +21,32 @@ import com.google.android.material.snackbar.Snackbar;
 
 public class MainActivity extends AppCompatActivity {
 
+    EditText email_et;
+    EditText pass_et;
+    Button btn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        String usrEmail, usrPass;
-        Button btn = findViewById(R.id.button2);
+        SharedPreferences spf = getSharedPreferences("SharedPrefs", Context.MODE_PRIVATE);
 
-        SharedPreferences spf;
-        EditText et = findViewById(R.id.editText);
-        EditText etp = findViewById(R.id.editText2);
+        String usrEmail = spf.getString("email", "");
+        String usrPass = spf.getString("password", "");
 
-        spf = getSharedPreferences("SharedPrefs", Context.MODE_PRIVATE);
-        usrEmail = spf.getString("email", "");
-        usrPass = spf.getString("pass", "");
-        et.setText(usrEmail);
-        etp.setText(usrPass);
+        email_et = findViewById(R.id.editText);
+        email_et.setText(usrEmail);
+        pass_et = findViewById(R.id.editText2);
+        pass_et.setText(usrPass);
 
-        btn.setOnClickListener(v -> {
+        btn = findViewById(R.id.button2);
+
+        btn.setOnClickListener((v) -> {
             Intent goToProfile = new Intent(MainActivity.this, ProfileActivity.class);
-            goToProfile.putExtra("email", getResources().getString(R.string.email_hint));
+            goToProfile.putExtra("email", usrEmail);
             startActivity(goToProfile);
+
         });
 
 
@@ -52,20 +56,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
 
-        SharedPreferences spf;
-
-        EditText et = findViewById(R.id.editText);
-        EditText etp = findViewById(R.id.editText2);
-        Button bt = findViewById(R.id.button2);
-
-        String inputEmail = et.getText().toString();
-        String inputPass = etp.getText().toString();
-
-        spf = getSharedPreferences("SharedPrefs", Context.MODE_PRIVATE);
+        SharedPreferences spf = getSharedPreferences("SharedPrefs", Context.MODE_PRIVATE);
         SharedPreferences.Editor edit = spf.edit();
 
-        edit.putString("email", et.getText().toString());
-        edit.putString("pass", etp.getText().toString());
+        edit.putString("email", email_et.getText().toString());
+        edit.putString("password", pass_et.getText().toString());
         edit.apply();
 
 

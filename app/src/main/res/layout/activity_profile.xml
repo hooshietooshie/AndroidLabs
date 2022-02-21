@@ -11,28 +11,28 @@
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:text="@string/profile" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:text="@string/name" />
 
     <EditText
         android:id="@+id/editTextName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:hint="@string/name_hint"
         android:inputType="textPersonName"
-        android:minHeight="48dp"
-        android:text="Name" />
+        android:minHeight="48dp" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:text="@string/email" />
 
     <EditText
         android:id="@+id/editTextTextEmailAddress"
@@ -46,20 +46,20 @@
         android:id="@+id/textView5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:text="@string/picture" />
+
 
     <ImageButton
         android:id="@+id/imageButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="dispatchTakePictureIntent"
         android:minHeight="48dp"
-        app:srcCompat="@android:drawable/picture_frame"
-        tools:ignore="SpeakableTextPresentCheck" />
+        android:onClick="dispatchTakePictureIntent"
+        app:srcCompat="@android:drawable/picture_frame" />
 
     <TextView
         android:id="@+id/textView6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:text="@string/instruction" />
 </LinearLayout>

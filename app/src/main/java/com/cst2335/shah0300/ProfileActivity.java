@@ -8,9 +8,7 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
-
 import android.content.Intent;
-
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -42,9 +40,8 @@ public class ProfileActivity extends AppCompatActivity {
         imgBtn = findViewById(R.id.imageButton);
         Intent fromMain = getIntent();
         String usrEmail = fromMain.getStringExtra("email");
-        EditText et = findViewById(R.id.editText);
-        et.setText(usrEmail);
-
+        EditText email_editText = findViewById(R.id.editTextTextEmailAddress);
+        email_editText.setText(usrEmail);
 
         Log.e(TAG, "In function: " + onCreate);
 
@@ -86,13 +83,6 @@ public class ProfileActivity extends AppCompatActivity {
         Log.e(TAG, "In function: " + onDestroy);
     }
 
-    private void dispatchTakePictureIntent(View view) {
-        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-            myPictureTakerLauncher.launch(takePictureIntent);
-        }
-    }
-
 
     ActivityResultLauncher<Intent> myPictureTakerLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
@@ -109,4 +99,11 @@ public class ProfileActivity extends AppCompatActivity {
                 }
             });
 
+
+    public void dispatchTakePictureIntent(View view) {
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+            myPictureTakerLauncher.launch(takePictureIntent);
+        }
+    }
 }
