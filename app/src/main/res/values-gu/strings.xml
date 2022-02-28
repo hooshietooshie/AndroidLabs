@@ -12,4 +12,5 @@
     <string name="picture">તારો ફોટો:</string>
     <string name="instruction">ચિત્ર લેવા માટે ઉપરના બટન પર ક્લિક કરો</string>
     <string name="warning">"યુઝરે ફોટો લેવાનો ઇનકાર કર્યો."</string>
+    <string name="gotochat">Go to chat</string>
 </resources>

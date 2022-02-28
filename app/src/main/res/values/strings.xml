@@ -11,4 +11,5 @@
     <string name="picture">Your picture:</string>
     <string name="instruction">Click the button above to take a picture</string>
     <string name="warning">User refused to capture a picture.</string>
+    <string name="gotochat">Go to chat</string>
 </resources>

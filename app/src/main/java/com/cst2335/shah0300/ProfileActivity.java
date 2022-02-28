@@ -14,13 +14,16 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.RadioButton;
 
 
 public class ProfileActivity extends AppCompatActivity {
 
     ImageButton imgBtn;
+    Button gotochat;
 
     public static final String TAG = "PROFILE_ACTIVITY";
     public static final String onCreate = "onCreate";
@@ -42,6 +45,13 @@ public class ProfileActivity extends AppCompatActivity {
         String usrEmail = fromMain.getStringExtra("email");
         EditText email_editText = findViewById(R.id.editTextTextEmailAddress);
         email_editText.setText(usrEmail);
+
+
+        gotochat = findViewById(R.id.button3);
+        gotochat.setOnClickListener((v) -> {
+            Intent goToChatRoom = new Intent(ProfileActivity.this, ChatRoomActivity.class);
+            startActivity(goToChatRoom);
+        });
 
         Log.e(TAG, "In function: " + onCreate);
 
