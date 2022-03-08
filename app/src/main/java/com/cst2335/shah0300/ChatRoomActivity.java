@@ -1,25 +1,20 @@
 package com.cst2335.shah0300;
 
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
-import android.os.Message;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
@@ -30,7 +25,7 @@ public class ChatRoomActivity extends AppCompatActivity {
     Button btn_send;
     Button btn_receive;
     Adapter myAdapter;
-    ArrayList<Message> message_arl = new ArrayList<Message>();
+    ArrayList<Message> message_arl = new ArrayList<>();
 
 
     @Override
@@ -57,7 +52,7 @@ public class ChatRoomActivity extends AppCompatActivity {
 
         btn_receive.setOnClickListener(v -> {
             String usr_message = message.getText().toString();
-            Log.e(TAG, "Recieve button is clicked");
+            Log.e(TAG, "Receive button is clicked");
 
             if (!usr_message.isEmpty()) {
                 message_arl.add(new Message(usr_message, false));
@@ -112,17 +107,17 @@ public class ChatRoomActivity extends AppCompatActivity {
             message_send.setText(getItem(position).toString());
             ImageView send_img = send_view.findViewById(R.id.send_Image);
 
-            View recive_view = inflater.inflate(R.layout.message_recive, parent, false);
-            TextView message_recive = recive_view.findViewById(R.id.recive_text);
-            message_recive.setText(getItem(position).toString());
-            ImageView recive_img = recive_view.findViewById(R.id.recive_Image);
+            View receive_view = inflater.inflate(R.layout.message_receive, parent, false);
+            TextView message_receive = receive_view.findViewById(R.id.receive_text);
+            message_receive.setText(getItem(position).toString());
+            ImageView receive_img = receive_view.findViewById(R.id.receive_Image);
 
             Message row = message_arl.get(position);
-            if (row.sendOrReceive == true) {
+            if (row.sendOrReceive) {
                 return send_view;
             }
 
-            return recive_view;
+            return receive_view;
         }
     }
 
