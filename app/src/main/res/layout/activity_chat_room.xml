@@ -7,9 +7,9 @@
     android:orientation="vertical">
 
     <ListView
+        android:id="@+id/Listview"
         android:layout_width="match_parent"
-        android:layout_height="683dp"
-        >
+        android:layout_height="683dp">
 
 
     </ListView>
@@ -38,6 +38,6 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Receive" />
+            android:text="RECEIVE" />
     </LinearLayout>
 </LinearLayout>
