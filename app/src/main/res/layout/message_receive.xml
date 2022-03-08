@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
@@ -7,17 +7,19 @@
 
     <ImageView
         android:id="@+id/receive_Image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/row_receive"
-        tools:layout_editor_absoluteX="347dp"
-        tools:layout_editor_absoluteY="1dp" />
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/row_receive"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/receive_text"
-        android:layout_width="0dp"
-        android:layout_height="64dp"
-        android:layout_weight="1" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/type_here"
+        app:layout_constraintStart_toEndOf="@+id/receive_Image"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
