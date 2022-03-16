@@ -64,7 +64,7 @@ public class ChatRoomActivity extends AppCompatActivity {
         list.setOnItemLongClickListener((adapterView, view, position, id) -> {
             AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
             alertDialog.setTitle("Do you want to delete this?")
-                    .setMessage("The selected row is: " + position + "/nThe database id is: " + id)
+                    .setMessage("The selected row is: " + position + "\n The database id is: " + id)
                     .setPositiveButton("Yes", (v, args) -> {
                         message_arl.remove(position);
                         myAdapter.notifyDataSetChanged();
@@ -90,7 +90,8 @@ public class ChatRoomActivity extends AppCompatActivity {
 
         @Override
         public Object getItem(int position) {
-            return message_arl.get(position);
+            Message row = message_arl.get(position);
+            return row.typed_Message;
         }
 
         @Override
