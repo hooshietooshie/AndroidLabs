@@ -1,6 +1,10 @@
 package com.cst2335.shah0300;
 
-
+import android.content.ContentValues;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -21,6 +25,8 @@ import java.util.ArrayList;
 
 public class ChatRoomActivity extends AppCompatActivity {
     public static final String TAG = "ChatRoomActivity";
+    MyOpenHelper myOpener;
+    SQLiteDatabase theDatabase;
     EditText message;
     Button btn_send;
     Button btn_receive;
@@ -33,6 +39,10 @@ public class ChatRoomActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_room);
 
+        theDatabase = my
+
+        Cursor results =
+
         btn_send = findViewById(R.id.button);
         btn_receive = findViewById(R.id.button4);
         message = findViewById(R.id.editText7);
@@ -44,7 +54,7 @@ public class ChatRoomActivity extends AppCompatActivity {
             Log.e(TAG, "Send button is clicked");
 
             if (!usr_message.isEmpty()) {
-                message_arl.add(new Message(usr_message, true));
+                message_arl.add(new Message(usr_message, true, ));
                 message.setText("");
                 myAdapter.notifyDataSetChanged();
             }
@@ -55,7 +65,7 @@ public class ChatRoomActivity extends AppCompatActivity {
             Log.e(TAG, "Receive button is clicked");
 
             if (!usr_message.isEmpty()) {
-                message_arl.add(new Message(usr_message, false));
+                message_arl.add(new Message(usr_message, false, id));
                 message.setText("");
                 myAdapter.notifyDataSetChanged();
             }
@@ -125,10 +135,12 @@ public class ChatRoomActivity extends AppCompatActivity {
     public class Message {
         String typed_Message;
         boolean sendOrReceive;
+        long id;
 
-        public Message(String typed_Message, boolean sendOrReceive) {
+        public Message(String typed_Message, boolean sendOrReceive, long id) {
             this.typed_Message = typed_Message;
             this.sendOrReceive = sendOrReceive;
+            this.id = id;
         }
 
         public String getTyped_Message() {
@@ -137,6 +149,14 @@ public class ChatRoomActivity extends AppCompatActivity {
 
         public boolean isSendOrReceive() {
             return sendOrReceive;
+        }
+
+        public long getId() {
+            return id;
+        }
+
+        public void setId(long id) {
+            this.id = id;
         }
     }
 }
