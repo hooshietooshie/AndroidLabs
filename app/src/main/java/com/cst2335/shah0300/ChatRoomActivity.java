@@ -39,9 +39,12 @@ public class ChatRoomActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_room);
 
-        theDatabase = my
+        myOpener = new MyOpenHelper(this);
 
-        Cursor results =
+
+        theDatabase = myOpener.getWritableDatabase();
+
+        Cursor results = theDatabase.rawQuery("Select * from " + MyOpenHelper.TABLE_NAME + ";", null);
 
         btn_send = findViewById(R.id.button);
         btn_receive = findViewById(R.id.button4);

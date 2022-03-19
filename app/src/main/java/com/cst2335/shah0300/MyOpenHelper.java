@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class MyOpenHelper extends SQLiteOpenHelper {
 
-    public  static final String filename = "MyDatabase";
+    public static final String filename = "MyDatabase";
     public static final int version = 1;
     public static final String TABLE_NAME = "MyData";
     public static final String COL_ID = "_id";
@@ -15,19 +15,19 @@ public class MyOpenHelper extends SQLiteOpenHelper {
     public static final String COL_TIME_SENT = "TimeSent";
 
     public MyOpenHelper(Context context) {
-        super(context,filename,null,version);
+        super(context, filename, null, version);
     }
 
     @Override
     public void onCreate(SQLiteDatabase sqlDB) {
-    String result = String.format(" %s %s %s", "FirstString","10","10.0");
+        String result = String.format(" %s %s %s", "FirstString", "10", "10.0");
 
-        sqlDB.execSQL( String.format( "Create table %s ( %s INTEGER PRIMARY KEY AUTOINCREMENT, %s TEXT, %s  INTEGER, %s TEXT );"
-                , TABLE_NAME, COL_ID,                       COL_MESSAGE, COL_SEND_RECEIVE, COL_TIME_SENT ) );
+        sqlDB.execSQL(String.format("Create table %s ( %s INTEGER PRIMARY KEY AUTOINCREMENT, %s TEXT, %s  INTEGER, %s TEXT );", TABLE_NAME, COL_ID, COL_MESSAGE, COL_SEND_RECEIVE, COL_TIME_SENT));
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-
+    public void onUpgrade(SQLiteDatabase sqlDB, int oldVersion, int newVersion) {
+        sqlDB.execSQL("Drop table if exists " + TABLE_NAME);
+        this.onCreate(sqlDB);
     }
 }
