@@ -46,6 +46,11 @@ public class ChatRoomActivity extends AppCompatActivity {
 
         Cursor results = theDatabase.rawQuery("Select * from " + MyOpenHelper.TABLE_NAME + ";", null);
 
+        int idIndex = results.getColumnIndex(MyOpenHelper.COL_ID);
+        int messageIndex = results.getColumnIndex(MyOpenHelper.COL_MESSAGE);
+        int sOrRIndex = results.getColumnIndex( MyOpenHelper.COL_SEND_RECEIVE);
+        int timeIndex = results.getColumnIndex( MyOpenHelper.COL_TIME_SENT );
+
         btn_send = findViewById(R.id.button);
         btn_receive = findViewById(R.id.button4);
         message = findViewById(R.id.editText7);
