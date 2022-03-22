@@ -14,8 +14,10 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,6 +29,7 @@ public class ChatRoomActivity extends AppCompatActivity {
     public static final String TAG = "ChatRoomActivity";
     MyOpenHelper myOpener;
     SQLiteDatabase theDatabase;
+    ListAdapter listAdapter;
     EditText message;
     Button btn_send;
     Button btn_receive;
@@ -48,14 +51,24 @@ public class ChatRoomActivity extends AppCompatActivity {
 
         int idIndex = results.getColumnIndex(MyOpenHelper.COL_ID);
         int messageIndex = results.getColumnIndex(MyOpenHelper.COL_MESSAGE);
-        int sOrRIndex = results.getColumnIndex( MyOpenHelper.COL_SEND_RECEIVE);
-        int timeIndex = results.getColumnIndex( MyOpenHelper.COL_TIME_SENT );
+        int sendOrReceiveIndex = results.getColumnIndex( MyOpenHelper.COL_SEND_RECEIVE);
+        results.moveToPosition(-1);
+
+        while(results.moveToNext()){
+            long id = results.getLong(idIndex);
+            String message = results.getString(messageIndex);
+            boolean isFromSelf = results.getInt(sendOrReceiveIndex) == 1;
+            message_arl.list.add(new Message(message, isFromSelf, id));
+            myAdapter.notifyDataSetChanged();
+        }
 
         btn_send = findViewById(R.id.button);
         btn_receive = findViewById(R.id.button4);
         message = findViewById(R.id.editText7);
         ListView list = findViewById(R.id.Listview);
         list.setAdapter(myAdapter = new Adapter());
+
+
 
         btn_send.setOnClickListener(v -> {
             String usr_message = message.getText().toString();
@@ -73,7 +86,7 @@ public class ChatRoomActivity extends AppCompatActivity {
             Log.e(TAG, "Receive button is clicked");
 
             if (!usr_message.isEmpty()) {
-                message_arl.add(new Message(usr_message, false, id));
+                message_arl.add(new Message(usr_message, false));
                 message.setText("");
                 myAdapter.notifyDataSetChanged();
             }
@@ -95,6 +108,40 @@ public class ChatRoomActivity extends AppCompatActivity {
         });
 
 
+    }
+
+    private void utilMessage(boolean fromSelf) {
+
+        Message message1 = new Message(message.getText().toString(), fromSelf, id);
+        ContentValues newRow = new ContentValues();
+        newRow.put(MyOpenHelper.COL_MESSAGE, message1.getText());
+        newRow.put(MyOpenHelper.COL_SEND_RECEIVE, fromSelf ? 1 : 0);
+        long id = theDatabase.insert(MyOpenHelper.TABLE_NAME, null, newRow);
+        message1.setId(id);
+        Adapter.list.add(message1);
+        message.setText("");
+        myAdapter.notifyDataSetChanged();
+
+    }
+
+    private void createDialog(View view) {
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+        alertDialog.setView(view);
+        alertDialog.setTitle("Do you want to delete this?");
+        alertDialog.setMessage("The selected row is: " + myAdapter.getCount());
+        alertDialog.setMessage("The database id is: ");
+        EditText input = new EditText(getApplicationContext());
+        alertDialog.setView(input);
+        alertDialog.setPositiveButton("remove", (click , v) -> {
+           String item = input.getText().toString();
+           myAdapter.notifyDataSetChanged();
+            Toast.makeText(getApplicationContext(), "Item deleted", Toast.LENGTH_SHORT).show();
+        });
+
+        alertDialog.create().show();
+        alertDialog.setNegativeButton("cancel", (click, v2) -> {
+            Log.i(TAG, "Cancelled");
+        });
     }
 
 
