@@ -1,7 +1,6 @@
 package com.cst2335.shah0300;
 
 import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
@@ -103,11 +102,11 @@ public class ChatRoomActivity extends AppCompatActivity {
 
         list.setOnItemClickListener((list1, view, position, id) -> {
             DetailsFragment fragment = new DetailsFragment();
+            androidx.fragment.app.FragmentManager fm = getSupportFragmentManager();
+
 
             if (tab_check) {
-                getSupportFragmentManager()
-                        .beginTransaction()
-                        .setReorderingAllowed(true)
+                fm.beginTransaction()
                         .replace(R.id.frame_layout, fragment)
                         .commit();
 
@@ -120,22 +119,22 @@ public class ChatRoomActivity extends AppCompatActivity {
         });
 
 
-//        list.setOnItemLongClickListener((adapterView, view, position, id) -> {
-//            Message selected_message = message_arl.get(position);
-//            id = selected_message.getId();
-//            AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
-//            alertDialog.setTitle("Do you want to delete this?")
-//                    .setMessage("The selected row is: " + position + "\n The database id is: " + id)
-//                    .setPositiveButton("Yes", (v, args) -> {
-//                        message_arl.remove(position);
-//                        myAdapter.notifyDataSetChanged();
-//                    })
-//                    .setNegativeButton("No", (v, args) -> {
-//                    })
-//                    .create().show();
-//
-//            return true;
-//        });
+        list.setOnItemLongClickListener((adapterView, view, position, id) -> {
+            Message selected_message = message_arl.get(position);
+            id = selected_message.getId();
+            AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+            alertDialog.setTitle("Do you want to delete this?")
+                    .setMessage("The selected row is: " + position + "\n The database id is: " + id)
+                    .setPositiveButton("Yes", (v, args) -> {
+                        message_arl.remove(position);
+                        myAdapter.notifyDataSetChanged();
+                    })
+                    .setNegativeButton("No", (v, args) -> {
+                    })
+                    .create().show();
+
+            return true;
+        });
 
 
     }
