@@ -1,7 +1,9 @@
 package com.cst2335.shah0300;
 
 import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -51,8 +53,14 @@ public class ChatRoomActivity extends AppCompatActivity {
 
         tab_check = findViewById(R.id.frame_layout) != null;
 
-        DetailsFragment fragment = new DetailsFragment();
+
         FragmentManager frag_mag = getFragmentManager();
+
+//        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+//        ft.setReorderingAllowed(true);
+//        ft.add(R.id.frame_layout, fragment);
+//        ft.commit();
+
 
         myOpener = new MyOpenHelper(this);
 
@@ -61,8 +69,6 @@ public class ChatRoomActivity extends AppCompatActivity {
 
         Cursor results = theDatabase.rawQuery("Select * from " + MyOpenHelper.TABLE_NAME + ";", null);
         print_Cursor(results, theDatabase.getVersion());
-
-
 
 
         btn_send.setOnClickListener(v -> {
@@ -96,8 +102,18 @@ public class ChatRoomActivity extends AppCompatActivity {
         });
 
         list.setOnItemClickListener((list1, view, position, id) -> {
-            if(tab_check != null) {
+            DetailsFragment fragment = new DetailsFragment();
 
+            if (tab_check) {
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .setReorderingAllowed(true)
+                        .replace(R.id.frame_layout, fragment)
+                        .commit();
+
+            } else {
+                Intent load_frag = new Intent(this, EmptyActivity.class);
+                startActivity(load_frag);
             }
 
 
