@@ -9,9 +9,16 @@
         <entry key="..\:/Users/Hooshie/AndroidStudioProjects/AndroidLabs/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/Hooshie/AndroidStudioProjects/AndroidLabs/app/src/main/res/layout/activity_main_relative.xml" value="0.2164855072463768" />
         <entry key="..\:/Users/Hooshie/AndroidStudioProjects/AndroidLabs/app/src/main/res/layout/activity_profile.xml" value="0.2" />
+        <entry key="..\:/Users/Hooshie/AndroidStudioProjects/AndroidLabs/app/src/main/res/layout/activity_test_toolbar.xml" value="0.2" />
+        <entry key="..\:/Users/Hooshie/AndroidStudioProjects/AndroidLabs/app/src/main/res/layout/activity_weather_forecast.xml" value="0.1" />
+        <entry key="..\:/Users/Hooshie/AndroidStudioProjects/AndroidLabs/app/src/main/res/layout/drawer_layout.xml" value="0.1" />
         <entry key="..\:/Users/Hooshie/AndroidStudioProjects/AndroidLabs/app/src/main/res/layout/fragment_details.xml" value="0.21888412017167383" />
         <entry key="..\:/Users/Hooshie/AndroidStudioProjects/AndroidLabs/app/src/main/res/layout/message_receive.xml" value="0.25" />
         <entry key="..\:/Users/Hooshie/AndroidStudioProjects/AndroidLabs/app/src/main/res/layout/message_send.xml" value="0.4" />
+        <entry key="..\:/Users/Hooshie/AndroidStudioProjects/AndroidLabs/app/src/main/res/layout/navigation_drawer.xml" value="0.264" />
+        <entry key="..\:/Users/Hooshie/AndroidStudioProjects/AndroidLabs/app/src/main/res/layout/tool_landing.xml" value="0.264" />
+        <entry key="..\:/Users/Hooshie/AndroidStudioProjects/AndroidLabs/app/src/main/res/menu/main_menu.xml" value="0.3695652173913043" />
+        <entry key="..\:/Users/Hooshie/AndroidStudioProjects/AndroidLabs/app/src/main/res/menu/navbar_menu.xml" value="0.1" />
       </map>
     </option>
   </component>

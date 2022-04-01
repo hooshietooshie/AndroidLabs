@@ -23,6 +23,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     ImageButton imgBtn;
     Button gotochat;
+    Button goToToolbar;
 
     public static final String TAG = "PROFILE_ACTIVITY";
     public static final String onCreate = "onCreate";
@@ -50,6 +51,12 @@ public class ProfileActivity extends AppCompatActivity {
         gotochat.setOnClickListener((v) -> {
             Intent goToChatRoom = new Intent(ProfileActivity.this, ChatRoomActivity.class);
             startActivity(goToChatRoom);
+        });
+
+        goToToolbar = findViewById(R.id.button_toolbar);
+        goToToolbar.setOnClickListener(v -> {
+            Intent in_goToToolbar = new Intent(ProfileActivity.this, TestToolbar.class);
+            startActivity(in_goToToolbar);
         });
 
         Log.e(TAG, "In function: " + onCreate);

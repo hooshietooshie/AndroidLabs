@@ -1,6 +1,7 @@
 package com.cst2335.shah0300;
 
-import android.app.FragmentManager;
+//import android.app.FragmentManager;
+
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
@@ -17,6 +18,7 @@ import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import androidx.fragment.app.FragmentManager;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -53,7 +55,7 @@ public class ChatRoomActivity extends AppCompatActivity {
         tab_check = findViewById(R.id.frame_layout) != null;
 
 
-        FragmentManager frag_mag = getFragmentManager();
+//        FragmentManager frag_mag = getFragmentManager();
 
 //        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 //        ft.setReorderingAllowed(true);
@@ -102,11 +104,11 @@ public class ChatRoomActivity extends AppCompatActivity {
 
         list.setOnItemClickListener((list1, view, position, id) -> {
             DetailsFragment fragment = new DetailsFragment();
-            androidx.fragment.app.FragmentManager fm = getSupportFragmentManager();
+//            FragmentManager fm = getSupportFragmentManager();
 
 
             if (tab_check) {
-                fm.beginTransaction()
+                getSupportFragmentManager().beginTransaction()
                         .replace(R.id.frame_layout, fragment)
                         .commit();
 

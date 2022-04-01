@@ -6,7 +6,7 @@
     <string name="button">પ્રવેશ કરો</string>
     <string name="email_hint">તમારો ઈ-મેલ અહીં દાખલ કરો..</string>
     <string name="pass_hint">તમારો પાસવર્ડ અહીં દાખલ કરો..</string>
-    <string name="name_hint">તમારું નામ દાખલ કરો...</string>
+    <string name="name_hint">તમારું નામ દાખલ કરો..</string>
     <string name="profile">તમારી પ્રોફાઇલ</string>
     <string name="name">તમારું નામ:</string>
     <string name="picture">તારો ફોટો:</string>
@@ -16,4 +16,7 @@
     <string name="send">મોકલો</string>
     <string name="receive">પ્રાપ્ત કરો</string>
     <string name="type_here">અહી લખો</string>
+    <string name="open">ખુલ્લા</string>
+    <string name="close">બંધ</string>
+    <string name="hello_blank_fragment">અહીં મેસેજ કરો</string>
 </resources>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+    <item
+        android:id="@+id/choice_1"
+        android:icon="@drawable/choice_1"
+        android:title="TODO"
+        android:orderInCategory="1"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/choice_2"
+        android:icon="@drawable/choice_2"
+        android:title="Man_walk"
+        android:orderInCategory="2"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/choice_3"
+        android:icon="@drawable/choice_3"
+        android:title="Wheelchair"
+        android:orderInCategory="3"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/overflow_action"
+        android:title="Overflow"
+        android:orderInCategory="4"
+        app:showAsAction="never" />
+
+</menu>
